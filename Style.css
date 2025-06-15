@@ -1,0 +1,102 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Para que os flashcards se ajustem em múltiplas linhas */
+    gap: 20px; /* Espaço entre os flashcards */
+    justify-content: center; /* Centraliza os flashcards */
+}
+
+.flashcard {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Largura fixa para os flashcards */
+    height: 200px; /* Altura fixa */
+    perspective: 1000px; /* Para a animação 3D de virar */
+    cursor: pointer;
+    position: relative;
+}
+
+.flashcard-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s; /* Transição para a animação de virar */
+    transform-style: preserve-3d; /* Permite que os filhos sejam posicionados em 3D */
+    position: relative; /* Para posicionar as faces */
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Esconde a face de trás quando não estiver virada */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding na largura e altura */
+    text-align: center;
+}
+
+.flashcard-front {
+    background-color: #e0f7fa; /* Um tom de azul claro */
+    border-radius: 8px;
+    color: #007bff;
+}
+
+.flashcard-back {
+    background-color: #c8e6c9; /* Um tom de verde claro */
+    border-radius: 8px;
+    color: #2e7d32;
+    transform: rotateY(180deg); /* Posiciona a face de trás invertida */
+}
+
+.flashcard-category {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.flashcard-question, .flashcard-answer {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* Empurra o footer para o final da página */
+}
